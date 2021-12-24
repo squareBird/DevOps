@@ -21,3 +21,21 @@ resource "aws_instance" "web-01" {
   }
 
 }
+
+resource "aws_instance" "db-01" {
+
+  ami = "ami-0a93a08544874b3b7"
+  instance_type = "t2.micro"
+  key_name = aws_key_pair.keypair.key_name
+  subnet_id = aws_subnet.main_private_subnet.id
+
+  vpc_security_group_ids = [
+    aws_security_group.sg_db.id
+  ]
+
+  tags = {
+    Name = "DB-01"
+    Project = var.project
+  }
+
+}
