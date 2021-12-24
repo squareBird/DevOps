@@ -16,6 +16,12 @@ resource "aws_security_group" "sg_web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  egress {
+    from_port = 0
+    protocol = "tcp"
+    to_port = 0
+  }
+
   tags = {
     Name = "sg_web"
     Project = var.project

@@ -15,6 +15,8 @@ resource "aws_instance" "web-01" {
     aws_security_group.sg_web.id
   ]
 
+  user_data_ = file("user_data_web.sh")
+
   tags = {
     Name = "WEB-01"
     Project = var.project
