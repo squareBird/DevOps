@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo yum install httpd
-sudo vi /test.txt << EOF
+sudo cat > /test.txt << EOF
 {
   "A" : "B"
 } EOF

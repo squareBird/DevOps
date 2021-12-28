@@ -36,7 +36,6 @@ resource "aws_instance" "db-01" {
 
   ami = var.amazon_linux
   instance_type = "t2.micro"
-  key_name = aws_key_pair.keypair.key_name
   subnet_id = aws_subnet.private_subnet.id
 
   vpc_security_group_ids = [

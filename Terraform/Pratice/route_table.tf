@@ -2,7 +2,7 @@
 resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name = "Pratice-Internet_Gateway"
+    Name = "Pratice_Internet_Gateway"
     Project = var.project
   }
 }
@@ -10,6 +10,10 @@ resource "aws_internet_gateway" "internet_gateway" {
 # NAT Gateway EIP
 resource "aws_eip" "nat_eip" {
   vpc = true
+  tags = {
+    Name = "NAT-EIP"
+    Project = var.project
+  }
 }
 
 # NAT Gateway
@@ -17,7 +21,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   allocation_id = aws_eip.nat_eip.id
   subnet_id = aws_subnet.public_subnet.id
   tags = {
-    Name = "Pratice-NAT_Gateway"
+    Name = "Pratice_NAT_Gateway"
     Project = var.project
   }
 
@@ -33,7 +37,7 @@ resource "aws_route_table" "public_rt" {
   }
 
   tags = {
-    Name = "Public-Route-Table"
+    Name = "Public_Route_Table"
     Project = var.project
   }
 }
@@ -48,7 +52,7 @@ resource "aws_route_table" "pivate_rt" {
   }
 
   tags = {
-    Name = "Public-Route_Table"
+    Name = "Public_Route_Table"
     Project = var.project
   }
 }
