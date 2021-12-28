@@ -11,13 +11,13 @@ resource "aws_instance" "web-01" {
   ami = var.amazon_linux
   instance_type = "t2.micro"
   key_name = aws_key_pair.keypair.key_name
-  subnet_id = aws_subnet.main_public_subnet.id
+  subnet_id = aws_subnet.public_subnet.id
 
   vpc_security_group_ids = [
     aws_security_group.sg_web.id
   ]
 
-  user_data_ = file("user_data_web.sh")
+  user_data = file("user_data_web.sh")
 
   tags = {
     Name = "WEB-01"
@@ -37,7 +37,7 @@ resource "aws_instance" "db-01" {
   ami = var.amazon_linux
   instance_type = "t2.micro"
   key_name = aws_key_pair.keypair.key_name
-  subnet_id = aws_subnet.main_private_subnet.id
+  subnet_id = aws_subnet.private_subnet.id
 
   vpc_security_group_ids = [
     aws_security_group.sg_db.id

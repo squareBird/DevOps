@@ -5,7 +5,7 @@
 resource "aws_security_group" "sg_web" {
   name = "sg_web"
   description = "HTTP / SSH"
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc.id
 
   ingress {
     from_port = 80
@@ -40,7 +40,7 @@ resource "aws_security_group" "sg_web" {
 resource "aws_security_group" "sg_db" {
   name = "sg_db"
   description = "Allow 3306 From WEB"
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc.id
 
   ingress {
     from_port = 3306
