@@ -50,6 +50,14 @@ resource "aws_security_group" "sg_db" {
     security_groups = [aws_security_group.sg_web.id]
   }
 
+  ingress {
+    from_port = 22
+    protocol = "tcp"
+    to_port = 22
+    # Allow from another security groups
+    security_groups = [aws_security_group.sg_web.id]
+  }
+
   egress {
     from_port = 0
     protocol = "tcp"
