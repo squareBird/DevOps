@@ -4,9 +4,11 @@ resource "aws_key_pair" "keypair" {
   public_key = file("~/.ssh/web_admin.pub")
 }
 
+# Make web instance
+# Security group 22(ssh) / 80(http) from Any
 resource "aws_instance" "web-01" {
 
-  ami = "ami-0a93a08544874b3b7"
+  ami = var.amazon_linux
   instance_type = "t2.micro"
   key_name = aws_key_pair.keypair.key_name
   subnet_id = aws_subnet.main_public_subnet.id
@@ -22,11 +24,17 @@ resource "aws_instance" "web-01" {
     Project = var.project
   }
 
+  root_block_device {
+    volume_size = 10
+  }
+
 }
 
+# Make db instance
+# Security group 3306(DB) from web instance
 resource "aws_instance" "db-01" {
 
-  ami = "ami-0a93a08544874b3b7"
+  ami = var.amazon_linux
   instance_type = "t2.micro"
   key_name = aws_key_pair.keypair.key_name
   subnet_id = aws_subnet.main_private_subnet.id
@@ -39,5 +47,10 @@ resource "aws_instance" "db-01" {
     Name = "DB-01"
     Project = var.project
   }
+
+  root_block_device {
+    volume_size = 20
+  }
+
 
 }

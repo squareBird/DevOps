@@ -1,5 +1,6 @@
+# Public subnet
 resource "aws_subnet" "main_public_subnet" {
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.public_sub
   vpc_id = aws_vpc.main.id
 
   availability_zone = var.zone1
@@ -11,8 +12,9 @@ resource "aws_subnet" "main_public_subnet" {
   }
 }
 
+# Private Subnet
 resource "aws_subnet" "main_private_subnet" {
-  cidr_block = "10.0.11.0/24"
+  cidr_block = var.private_sub
   vpc_id = aws_vpc.main.id
   availability_zone = var.zone2
 
