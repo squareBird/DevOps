@@ -3,7 +3,7 @@
 # external -> 22(HTTP)
 # any -> external(Outbound)
 resource "aws_security_group" "sg_jenkins" {
-  name = "sg_web"
+  name = "sg_jenkins"
   description = "HTTP / SSH"
   vpc_id = aws_vpc.vpc.id
 
