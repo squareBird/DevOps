@@ -4,6 +4,24 @@ resource "aws_key_pair" "keypair" {
   public_key = file("~/.ssh/web_admin.pub")
 }
 
+resource "aws_instance" "jenkins" {
+  ami = var.ubuntu2004
+  instance_type = "t2.micro"
+  key_name = aws_key_pair.keypair.id
+  subnet_id = aws_subnet.public_subnet.id
+
+  vpc_security_group_ids = [
+    aws_security_group.sg_jenkins.id
+  ]
+
+  user_data = file("user_data_jenkins.sh")
+
+  tags = {
+    Name = "Jenkins"
+    Project = var.project
+  }
+}
+
 # Make web instance
 # Security group 22(ssh) / 80(http) from Any
 resource "aws_instance" "web-01" {
@@ -16,8 +34,6 @@ resource "aws_instance" "web-01" {
   vpc_security_group_ids = [
     aws_security_group.sg_web.id
   ]
-
-  user_data = file("user_data_web.sh")
 
   tags = {
     Name = "WEB-01"

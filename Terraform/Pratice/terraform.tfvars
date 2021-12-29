@@ -10,4 +10,6 @@ zone2 = "ap-northeast-2c"
 
 project = "terraform_pratice"
 
-amazon_linux = "ami-0a93a08544874b3b7"
+# Amazon Linux 커널 5.1
+amazon_linux = "ami-0eb14fe5735c13eb5"
+ubuntu2004 = "ami-0454bb2fefc7de534"

@@ -1,3 +1,39 @@
+# Jenkins security group
+# external -> 8080(HTTP)
+# external -> 22(HTTP)
+# any -> external(Outbound)
+resource "aws_security_group" "sg_jenkins" {
+  name = "sg_web"
+  description = "HTTP / SSH"
+  vpc_id = aws_vpc.vpc.id
+
+  ingress {
+    from_port = 8080
+    protocol = "tcp"
+    to_port = 8080
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port = 22
+    protocol = "tcp"
+    to_port = 22
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port = 0
+    protocol = "tcp"
+    to_port = 65535
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "sg_jenkins"
+    Project = var.project
+  }
+
+}
+
 # Web security group
 # external -> 80(HTTP)
 # external -> 22(HTTP)

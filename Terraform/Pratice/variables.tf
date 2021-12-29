@@ -18,3 +18,4 @@ variable "zone2" {}
 
 # Resource variables
 variable "amazon_linux" {}
+variable "ubuntu2004" {}
