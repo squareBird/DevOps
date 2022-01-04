@@ -11,8 +11,13 @@ variable "project" {}
 # Network variables
 variable "region" {}
 variable "vpc_cidr" {}
-variable "public_sub" {}
-variable "private_sub" {}
+variable "public_sub_01" {}
+variable "public_sub_02" {}
+variable "private_sub_01" {}
+variable "private_sub_02" {}
+variable "db_sub_01" {}
+variable "db_sub_02" {}
+
 variable "zone1" {}
 variable "zone2" {}
 

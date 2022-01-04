@@ -70,6 +70,38 @@ resource "aws_security_group" "sg_web" {
 
 }
 
+resource "aws_security_group" "sg_was" {
+  name = "sg_was"
+  description = "WAS"
+  vpc_id = aws_vpc.vpc.id
+
+  ingress {
+    from_port = 8080
+    protocol = "tcp"
+    to_port = 8080
+    cidr_blocks = [aws_security_group.sg_web.id]
+  }
+
+  ingress {
+    from_port = 22
+    protocol = "tcp"
+    to_port = 22
+    cidr_blocks = [aws_security_group.sg_web.id]
+  }
+
+  egress {
+    from_port = 0
+    protocol = "tcp"
+    to_port = 65535
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "sg_was"
+    Project = var.project
+  }
+}
+
 # Web security group
 # external -> 3306(HTTP)
 # any -> external(Outbound)
@@ -83,7 +115,7 @@ resource "aws_security_group" "sg_db" {
     protocol = "tcp"
     to_port = 3306
     # Allow from another security groups
-    security_groups = [aws_security_group.sg_web.id]
+    security_groups = [aws_security_group.sg_was.id]
   }
 
   ingress {
@@ -91,7 +123,7 @@ resource "aws_security_group" "sg_db" {
     protocol = "tcp"
     to_port = 22
     # Allow from another security groups
-    security_groups = [aws_security_group.sg_web.id]
+    security_groups = [aws_security_group.sg_was.id]
   }
 
   egress {
