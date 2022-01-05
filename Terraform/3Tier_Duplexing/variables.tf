@@ -1,15 +1,6 @@
-variable "accesskey" {
-  type = string
-}
-
-variable "secretkey" {
-  type = string
-}
-
 variable "project" {}
 
 # Network variables
-variable "region" {}
 variable "vpc_cidr" {}
 variable "public_sub_01" {}
 variable "public_sub_02" {}

@@ -15,7 +15,7 @@ resource "aws_instance" "jenkins" {
     aws_security_group.sg_jenkins.id
   ]
 
-  user_data = file("user_data_jenkins.sh")
+  user_data = file("/userdata/user_data_jenkins.sh")
 
   tags = {
     Name = "Jenkins"

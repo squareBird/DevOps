@@ -79,14 +79,14 @@ resource "aws_security_group" "sg_was" {
     from_port = 8080
     protocol = "tcp"
     to_port = 8080
-    cidr_blocks = [aws_security_group.sg_web.id]
+    cidr_blocks = [aws_security_group.sg_web]
   }
 
   ingress {
     from_port = 22
     protocol = "tcp"
     to_port = 22
-    cidr_blocks = [aws_security_group.sg_web.id]
+    cidr_blocks = [aws_security_group.sg_web]
   }
 
   egress {
@@ -115,7 +115,7 @@ resource "aws_security_group" "sg_db" {
     protocol = "tcp"
     to_port = 3306
     # Allow from another security groups
-    security_groups = [aws_security_group.sg_was.id]
+    security_groups = [aws_security_group.sg_was]
   }
 
   ingress {
@@ -123,7 +123,7 @@ resource "aws_security_group" "sg_db" {
     protocol = "tcp"
     to_port = 22
     # Allow from another security groups
-    security_groups = [aws_security_group.sg_was.id]
+    security_groups = [aws_security_group.sg_was]
   }
 
   egress {
