@@ -1,3 +1,11 @@
+variable "accesskey" {
+  type = string
+}
+
+variable "secretkey" {
+  type = string
+}
+
 variable "project" {}
 
 # Network variables
