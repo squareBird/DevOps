@@ -11,7 +11,7 @@ resource "aws_instance" "webtest" {
   subnet_id = aws_subnet.public_sub.id
 
   vpc_security_group_ids = [
-    aws_security_group.test_default
+    aws_security_group.test_default.id
   ]
 
   user_data = file("user_data_web.sh")
