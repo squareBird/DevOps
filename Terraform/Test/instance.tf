@@ -5,7 +5,7 @@ resource "aws_key_pair" "keypair" {
 }
 
 resource "aws_instance" "webtest" {
-  ami = var.ubuntu2004
+  ami = var.amazon_linux
   instance_type = "t2.micro"
   key_name = aws_key_pair.keypair.id
   subnet_id = aws_subnet.public_sub.id
