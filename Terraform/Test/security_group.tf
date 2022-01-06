@@ -1,4 +1,9 @@
 resource "aws_security_group" "test_default" {
+
+  name = "test_sg"
+  description = "test"
+  vpc_id = aws_vpc.test.id
+
   ingress {
     from_port = 0
     protocol = "tcp"
