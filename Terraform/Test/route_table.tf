@@ -59,7 +59,7 @@ resource "aws_route_table" "pivate_rt" {
 # Routaing table assocication
 resource "aws_route_table_association" "public_rt_01_asso" {
   route_table_id = aws_route_table.public_rt.id
-  subnet_id = aws_subnet.public_sub
+  subnet_id = aws_subnet.public_sub.id
 }
 
 # Routaing table assocication
