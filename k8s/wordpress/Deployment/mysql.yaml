@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - image: mysql:5.6
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                # kubectl create secret generic mysql-password --from-literal=password=rP@ssw0rd
+                secretKeyRef: # secret 객체인듯(?)
+                  name: mysql-password # 객체 이름인 mysql-password(?)
+                  key: password # 리터럴인 password인듯(?)
+            - name: MYSQL_DATABASE # 구성할 database명
+              value: k8sdb
+            - name: MYSQL_USER # database에 권한이 있는 user
+              value: k8suser
+            - name: MYSQL_ROOT_HOST # 접근 호스트
+              value: '%'
+            - name: MYSQL_PASSWORD # database에 권한이 있는 user의 패스워드
+              value: P@ssw0rd!!
+          ports: # wp-1. 여기에 설정하는듯
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage # v-2. v-1에서 설정한 name 활용하는듯
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage # v-1. name 설정
+          persistentVolumeClaim: # 생성한 pvc 연결하는듯(?)
+            claimName: mysql-volumeclaim
