@@ -13,7 +13,7 @@ spec:
         run: mynginx
     spec:
       containers:
-        - image: nginx
+        - image: nginx:3.0
           name: mynginx
           ports:
             - containerPort: 80
