@@ -6,20 +6,12 @@ name: Docker
 # documentation.
 
 on:
-  schedule:
-    - cron: '21 9 * * *'
   push:
     branches: [ master ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ master ]
-
-env:
-  # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
@@ -29,21 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-#         # 이미지 이름 및 버전 정보 태깅
-#       - name: Docker meta
-#         id: docker_meta
-#         uses: crazy-max/ghaction-docker-meta@v1
-#         with:
-#           #images: teichae/node
-#           images: 3.38.108.115/cloudclub/junggyu:latest
-#           tag-semver: |
-#             {{version}}
-#             {{major}}.{{minor}}
-        
-        # Docker Build 환경 세팅
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-        
+        # image 세팅
       - name: Docker meta
         run: docker tag nginx 3.38.108.115/cloudclub/squarebirds:latest
 
@@ -56,5 +34,3 @@ jobs:
 #           file: ./Dockerfile
 #           platforms: linux/amd64
 #           push: true
-
-          
