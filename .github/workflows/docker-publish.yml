@@ -29,21 +29,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-        # 이미지 이름 및 버전 정보 태깅
-      - name: Docker meta
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          #images: teichae/node
-          images: 3.38.108.115/cloudclub/junggyu:latest
-          tag-semver: |
-            {{version}}
-            {{major}}.{{minor}}
+#         # 이미지 이름 및 버전 정보 태깅
+#       - name: Docker meta
+#         id: docker_meta
+#         uses: crazy-max/ghaction-docker-meta@v1
+#         with:
+#           #images: teichae/node
+#           images: 3.38.108.115/cloudclub/junggyu:latest
+#           tag-semver: |
+#             {{version}}
+#             {{major}}.{{minor}}
         
         # Docker Build 환경 세팅
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
         
+      - name: Docker meta
+        run: docker tag nginx:latest 3.38.108.115/cloudclub/squarebirds:latest
+
         # Harbor Push
       - name: Push Harbor
         run: docker push 3.38.108.115/cloudclub/squarebird:latest
