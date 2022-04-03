@@ -26,11 +26,11 @@ jobs:
 
         # image 세팅
       - name: Docker meta
-        run: docker tag mariadb ${{ secrets.HARBOR_REPOSITORY}}mymariadb:0.2
+        run: docker tag mariadb ${{ secrets.HARBOR_REPOSITORY}}mymariadb:0.3
 
         # Harbor Push
       - name: Push Harbor
-        run: docker push ${{ secrets.HARBOR_REPOSITORY}}mymariadb:0.2
+        run: docker push ${{ secrets.HARBOR_REPOSITORY}}mymariadb:0.3
 #         uses : docker/build-push-action@v2
 #         with:
 #           context: .
