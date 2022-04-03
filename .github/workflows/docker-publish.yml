@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Docker Login
-        uses: docker login 3.38.108.115 -u admin -p Harbor12345
+        run: docker login 3.38.108.115 -u admin -p Harbor12345
 
         # image 세팅
       - name: Docker meta
