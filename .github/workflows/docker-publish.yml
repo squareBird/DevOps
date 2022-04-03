@@ -46,11 +46,13 @@ jobs:
         
         # Harbor Push
       - name : Push Harbor
-        uses : docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64
-          push: true
+        run: |
+          docker push 3.38.108.115/cloudclub/squarebird:latest
+#         uses : docker/build-push-action@v2
+#         with:
+#           context: .
+#           file: ./Dockerfile
+#           platforms: linux/amd64
+#           push: true
 
           
