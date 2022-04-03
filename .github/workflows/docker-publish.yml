@@ -23,11 +23,11 @@ jobs:
         
         # image 세팅
       - name: Docker meta
-        run: docker tag nginx 3.38.108.115/cloudclub/squarebirds:latest
+        run: docker tag mariadb 3.38.108.115/cloudclub/mymariadb:0.2
 
         # Harbor Push
       - name: Push Harbor
-        run: docker push 3.38.108.115/cloudclub/squarebird:latest
+        run: docker push 3.38.108.115/cloudclub/mymariadb:0.2
 #         uses : docker/build-push-action@v2
 #         with:
 #           context: .
