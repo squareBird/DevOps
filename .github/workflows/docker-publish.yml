@@ -34,7 +34,8 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: teichae/node
+          #images: teichae/node
+          images: 3.38.108.115/cloudclub/junggyu:latest
           tag-semver: |
             {{version}}
             {{major}}.{{minor}}
