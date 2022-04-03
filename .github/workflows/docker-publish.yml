@@ -21,6 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Docker Login
+        uses: docker login 3.38.108.115 -u admin -p Harbor12345
+
         # image 세팅
       - name: Docker meta
         run: docker tag mariadb 3.38.108.115/cloudclub/mymariadb:0.2
