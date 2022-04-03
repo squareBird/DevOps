@@ -17,17 +17,10 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-<<<<<<< HEAD
 
       - name: Checkout
         uses: actions/checkout@v2
 
-=======
-    
-      - name: Checkout
-        uses: actions/checkout@v2
-        
->>>>>>> origin/master
         # image 세팅
       - name: Docker meta
         run: docker tag mariadb 3.38.108.115/cloudclub/mymariadb:0.2
