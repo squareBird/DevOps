@@ -66,8 +66,6 @@ rm -r /data/database
 rm -r /data/registry
 
 
-
-
- # 3. Habor 설치
- wget https://github.com/goharbor/harbor/releases/download/v2.4.2/harbor-offline-installer-v2.4.2.tgz
- tar xvzf harbor-offline-installer-v2.4.2.tgz
+# 3. Habor 설치
+wget https://github.com/goharbor/harbor/releases/download/v2.4.2/harbor-offline-installer-v2.4.2.tgz
+tar xvzf harbor-offline-installer-v2.4.2.tgz

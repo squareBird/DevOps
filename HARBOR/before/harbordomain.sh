@@ -42,7 +42,11 @@ cp harbor.squarebird.shop.key /data/cert/
 openssl x509 -inform PEM -in harbor.squarebird.shop.crt -out harbor.squarebird.shop.cert
 
 # Docker 인증서 복사
-sudo mkdir -p /etc/docker/certs.d/harbor.squarebird.shop
+# 외부에서 해당 Harbor에 접근할 경우 /etc/docker/cert.d에 이 인증서들이 있어야 접근 가능
+# harbor 설치시 이 인증값들을 이용했기 때문..
+# certificate: /etc/docker/certs.d/harbor.squarebird.shop/harbor.squarebird.shop.cert
+# private_key: /etc/docker/certs.d/harbor.squarebird.shop/harbor.squarebird.shop.key
+mkdir -p /etc/docker/certs.d/harbor.squarebird.shop
 cp harbor.squarebird.shop.cert /etc/docker/certs.d/harbor.squarebird.shop/
 cp harbor.squarebird.shop.key /etc/docker/certs.d/harbor.squarebird.shop/
 cp ca.crt /etc/docker/certs.d/harbor.squarebird.shop/
