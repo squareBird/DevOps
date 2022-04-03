@@ -30,11 +30,10 @@ jobs:
 
         # Harbor Push
       - name: Push Harbor
-        run: docker push ${{ secrets.HARBOR_REPOSITORY}}mymariadb:0.3
+        run: docker push ${{ secrets.HARBOR_REPOSITORY}}${{ secrets.HARBOR_REPOSITORY}}mymariadb:0.3
 #         uses : docker/build-push-action@v2
 #         with:
 #           context: .
 #           file: ./Dockerfile
 #           platforms: linux/amd64
 #           push: true
-# SS
