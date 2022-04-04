@@ -21,6 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: test
+        run: cat repotest.txt
+
       - name: Docker Login
         run: docker login ${{ secrets.HARBOR_ADDRESS }} -u ${{ secrets.HARBOR_USERNAME }} -p ${{ secrets.HARBOR_PASSWORD }}
 
