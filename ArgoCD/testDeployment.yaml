@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: mynginx2
+  template:
+    metadata:
+      labels:
+        run: mynginx2
+    spec:
+      containers:
+        - image: 52.79.185.138/junggyu/junggy
+          name: testharbor
+          port: 80
