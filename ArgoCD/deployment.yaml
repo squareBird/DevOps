@@ -13,5 +13,5 @@ spec:
         run: mynginx
     spec:
       containers:
-        - image: nginx
+        - image: 52.79.185.138/junggyu/junggy
           name: testharbor
