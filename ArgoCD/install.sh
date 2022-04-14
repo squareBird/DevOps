@@ -28,3 +28,5 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 # Ingress 로 접근
 #이건 위의 공식 홈페이지에서 확인
 #https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo

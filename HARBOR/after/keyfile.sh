@@ -21,7 +21,7 @@ openssl req -sha512 -new \
 # 접속할 IP 또는 DNS 정의
 # subjectAltName = DNS:harbor.squarebird.shop,IP:10.0.2.160,IP:127.0.0.1
 cat > v3ext.cnf <<-EOF
-subjectAltName = IP:10.0.1.235,IP:127.0.0.1
+subjectAltName = IP:10.0.1.165,IP:127.0.0.1,IP:52.79.185.138
 EOF
 
 # CA를 통한 인증작업 수행

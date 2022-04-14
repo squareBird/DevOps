@@ -24,17 +24,17 @@ jobs:
       - name: Docker Login
         run: docker login ${{ secrets.HARBOR_ADDRESS }} -u ${{ secrets.HARBOR_USERNAME }} -p ${{ secrets.HARBOR_PASSWORD }}
 
+      - name: Build
+        # uses: actions/python~~~~~~
+        run: ./gradlew # 애플리케이션 Build
+
+      - name: Container Image Build
+        run: docker build . -t cloud-native
+
         # image 세팅
       - name: Docker meta
-        run: docker tag mariadb ${{ secrets.HARBOR_ADDRESS}}${{ secrets.HARBOR_REPOSITORY}}mymariadb:0.5
+        run: docker tag mariadb ${{ secrets.HARBOR_ADDRESS}}//cloud-native:0.5
 
         # Harbor Push
       - name: Push Harbor
-        run: docker push ${{ secrets.HARBOR_ADDRESS}}${{ secrets.HARBOR_REPOSITORY}}mymariadb:0.5
-#         uses : docker/build-push-action@v2
-#         with:
-#           context: .
-#           file: ./Dockerfile
-#           platforms: linux/amd64
-#           push: true
-#
+        run: docker push ${{ secrets.HARBOR_ADDRESS}}${{ secrets.HARBOR_REPOSITORY}}cloud-native:0.5
