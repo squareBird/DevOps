@@ -15,4 +15,3 @@ spec:
       containers:
         - image: 52.79.185.138/jiyoon/mypython@sha256:136c19db0c59679756988aa03d561459fa68dee824ff27fd0bf5b71bf7c3bb1e
           name: testharbor
-          port: 80
