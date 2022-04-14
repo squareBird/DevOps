@@ -20,6 +20,10 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+        
+        # Build 하기
+      - name: Build
+        run: docker build -t . mymariadb
 
       - name: Docker Login
         run: docker login ${{ secrets.HARBOR_ADDRESS }} -u ${{ secrets.HARBOR_USERNAME }} -p ${{ secrets.HARBOR_PASSWORD }}
