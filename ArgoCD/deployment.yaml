@@ -15,3 +15,4 @@ spec:
       containers:
         - image: 52.79.185.138/junggyu/junggy
           name: testharbor
+          port: 80
