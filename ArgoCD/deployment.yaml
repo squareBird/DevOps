@@ -13,7 +13,7 @@ spec:
         run: mynginx
     spec:
       containers:
-        - image: 52.79.185.138/junggyu/junggyu:latest
+        - image: 52.79.185.138/junggyu/junggy:latest
           name: testharbor
           ports:
             - containerPort: 80
