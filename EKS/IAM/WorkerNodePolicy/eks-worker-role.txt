@@ -1,0 +1,10 @@
+# 내가 추가한 것
+ALBIngressControllerPolicy
+EKSAutoscalierPolciy
+
+# AWS에서 기본적으로 제공하는 것
+AmazonEKSWorkerNodePolicy
+AmazonEC2ContainerRegistryReadOnly
+CloudWatchLogsFullAccess
+AmazonEKS_CNI_Policy
+AmazonRoute53FullAccess
