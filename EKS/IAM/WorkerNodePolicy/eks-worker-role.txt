@@ -8,3 +8,4 @@ AmazonEC2ContainerRegistryReadOnly
 CloudWatchLogsFullAccess
 AmazonEKS_CNI_Policy
 AmazonRoute53FullAccess
+AmazonElasticFileSystemFullAccess
