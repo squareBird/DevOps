@@ -290,21 +290,13 @@ config:
   ## https://docs.fluentbit.io/manual/pipeline/inputs
   inputs: |
     [INPUT]
-        Name              forward
-        Tag               logback
-        Listen            0.0.0.0
-        Port              24224
-        Buffer_Chunk_Size 1M
-        Buffer_Max_Size   6M
-    [INPUT]
         Name              tail
-        Tag               kube.*
-        Path              /var/log/containers/*.log
+        Tag               applog
+        Path              /var/log/app/*.log
         Parser            docker
-        DB                /var/log/flb_kube.db
-        Mem_Buf_Limit     5MB
-        Skip_Long_Lines   On
-        Refresh_Interval  10
+#        Mem_Buf_Limit     5MB
+#        Skip_Long_Lines   On
+#        Refresh_Interval  10
 
   ## https://docs.fluentbit.io/manual/pipeline/filters
   filters: |
